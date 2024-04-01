@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= room.name %></title>
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/room.css"> <!-- Link to the CSS file -->
+    <script src="/socket.io/socket.io.js"></script> <!-- Include Socket.IO client library -->
+    <script>
+        // Establish WebSocket connection
+        const socket = io();
+        const roomId = '<%= room._id %>'; // Get room ID from server-side data
+        socket.emit('joinRoom', roomId);          
+        // Function to send chat messages
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                socket.emit('chatMessage', roomId, message); // Send chat message to server
+                messageInput.value = ''; // Clear message input field
+            }
+        }
+
+        // Function to display chat messages
+        function displayMessage(message) {
+            const messageList = document.getElementById('messageList');
+            const li = document.createElement('li');
+            li.textContent = message;
+            messageList.appendChild(li);
+        }
+
+        // Event listener for receiving messages from server
+        socket.on('message', (message) => {
+            displayMessage(message); // Display received message
+        });
+    </script>
+</head>
+<body>
+    <%- include('./includes/nav.ejs') %>
+    <div class="chat-container">
+        <h1 class="chat-header"><%= room.name %></h1>
+        <div class="chat-messages" id="messageList"></div>
+        <div class="chat-input-area">
+            <input type="text" id="messageInput" class="chat-input" placeholder="Type your message...">
+            <button class="chat-send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</body>
+</html>

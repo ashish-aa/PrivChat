@@ -1,0 +1,80 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #bdd2eb; /* Light blue shade for body background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Chat Container Styles */
+.chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background for chat container */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    height: 500px; /* Fixed height for the container */
+    justify-content: center; /* Vertically center content */
+}
+
+/* Chat Header Styles */
+.chat-header {
+    background-color: #6770f0; /* Light purple background for header */
+    color: #f1efef; /* Dark grey text for header */
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Chat Messages Styles */
+.chat-messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    flex-grow: 1; /* Allow messages to grow and take up available space */
+    overflow-y: auto; /* Enable scrolling for messages */
+    border: 1px solid #e0f7fa; /* Light green border for messages */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #ffffff; /* White background for messages */
+}
+
+.chat-messages li {
+    padding: 10px;
+    border-bottom: 1px solid #e0f7fa; /* Light green border for each message */
+}
+
+/* Chat Input Area Styles */
+.chat-input-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Chat Input Styles */
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #e0f7fa; /* Light green border for input */
+    border-radius: 5px;
+}
+
+/* Chat Send Button Styles */
+.chat-send-btn {
+    padding: 10px 20px;
+    background-color: #0072ff; /* Blue background for send button */
+    color: #ffffff; /* White text for send button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.chat-send-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

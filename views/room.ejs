@@ -16,7 +16,7 @@
         // Establish WebSocket connection
         const socket = io();
         const roomId = '<%= room._id %>'; // Get room ID from server-side data
-        socket.emit('joinRoom', (roomId,username));          
+        socket.emit('joinRoom', roomId);          
         // Function to send chat messages
         function sendMessage() {
             const messageInput = document.getElementById('messageInput');

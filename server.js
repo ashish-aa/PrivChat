@@ -31,9 +31,9 @@ io.on('connection', (socket) => {
   console.log('A user connected');
 
   // Joining a room
-  socket.on('joinRoom', (roomId, username) => {
+  socket.on('joinRoom', roomId => {
       socket.join(roomId);
-      console.log(`${username} joined room ${roomId}`);
+      console.log(`username joined room ${roomId}`);
   });
 
   // Leaving a room
@@ -44,6 +44,7 @@ io.on('connection', (socket) => {
 
   // Broadcasting messages to room participants
   socket.on('chatMessage', (roomId, message, username) => {
+       console.log(message);
       io.to(roomId).emit('message', { username: username, message: message }); // Emit message to all clients in the room along with the username
   });
 

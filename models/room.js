@@ -14,6 +14,10 @@ const roomSchema = new mongoose.Schema({
   host: {
     type: String,
     required: true
+  },
+  client:{
+    type: String,
+    require:true
   }
 });
 

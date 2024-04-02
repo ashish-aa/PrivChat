@@ -19,6 +19,7 @@ exports.getJoinRoom = (req,res,next)=>{
 exports.postJoinRoom = async (req, res,next) => {
    const name = req.body.roomName;
    const passkey = req.body.passkey;
+   const username = req.body.username;
     Room.findOne({name:name,passkey:passkey})
    .then(room=>{
     console.log("Res ::",room);
@@ -27,7 +28,7 @@ exports.postJoinRoom = async (req, res,next) => {
         return res.status(404).send('Room not found or incorrect passkey');
       }
       
-      res.redirect(`/room/${room._id}`); 
+      res.redirect(`/room/${room._id}?username=${username}`); 
    }).catch(err=>{
     console.log(err);
     return res.status(404).redirect('/error/notF');
@@ -40,11 +41,12 @@ exports.postJoinRoom = async (req, res,next) => {
 exports.JoinRoom = async (req, res) => {
     try {
       const roomId = req.params.roomId;
+      const username = req.query.username;
       const room = await Room.findById(new ObjectId(roomId));
       if (!room) {
         return res.status(404).redirect('/error/notF');
       }
-      res.render('room', { room }); // Render the room view with the room data
+      res.render('room', { room, username:username}); // Render the room view with the room data
     } catch (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');
@@ -53,11 +55,11 @@ exports.JoinRoom = async (req, res) => {
 
 exports.postCreateRoom =   async (req, res) => {
     try {
-      const { name, passkey } = req.body;
-      const host = 'Dummy'; // Assuming authentication is implemented and user is logged in
-      const room = new Room({ name, passkey, host });
+      const { name, passkey,username } = req.body;
+       // Assuming authentication is implemented and user is logged in
+      const room = new Room({ name: name, passkey: passkey, host: username });
       await room.save();
-      res.redirect(`/room/${room._id}`); // Redirect to the newly created room
+      res.redirect(`/room/${room._id}?username=${username}`); // Redirect to the newly created room
     } catch (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');

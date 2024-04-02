@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="/css/room.css"> <!-- Link to the CSS file -->
     <script src="/socket.io/socket.io.js"></script> <!-- Include Socket.IO client library -->
     <script>
+         function getUsernameFromURL() {
+            const queryParams = new URLSearchParams(window.location.search);
+            return queryParams.get('username') || 'Anonymous'; // Default to 'Anonymous' if username not provided
+        }
+        const username = getUsernameFromURL();
         // Establish WebSocket connection
         const socket = io();
         const roomId = '<%= room._id %>'; // Get room ID from server-side data
@@ -17,23 +22,23 @@
             const messageInput = document.getElementById('messageInput');
             const message = messageInput.value.trim();
             if (message !== '') {
-                socket.emit('chatMessage', roomId, message); // Send chat message to server
+                socket.emit('chatMessage', roomId, message,username); // Send chat message to server
                 messageInput.value = ''; // Clear message input field
             }
         }
 
         // Function to display chat messages
-        function displayMessage(message) {
+        function displayMessage(username,message) {
             const messageList = document.getElementById('messageList');
             const li = document.createElement('li');
-            li.textContent = message;
+            li.textContent =`${username}: ${message}`;
             messageList.appendChild(li);
         }
 
         // Event listener for receiving messages from server
-        socket.on('message', (message) => {
-            displayMessage(message); // Display received message
-        });
+        socket.on('message', (data) => {
+        displayMessage(data.username, data.message); // Display received message
+    });
     </script>
 </head>
 <body>

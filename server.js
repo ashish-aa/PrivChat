@@ -28,30 +28,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 io.on('connection', (socket) => {
-    console.log('A user connected');
-  
-    // Joining a room
-    socket.on('joinRoom', (roomId) => {
+  console.log('A user connected');
+
+  // Joining a room
+  socket.on('joinRoom', (roomId, username) => {
       socket.join(roomId);
-      console.log(`User joined room ${roomId}`);
-    });
-  
-    // Leaving a room
-    socket.on('leaveRoom', (roomId) => {
+      console.log(`${username} joined room ${roomId}`);
+  });
+
+  // Leaving a room
+  socket.on('leaveRoom', (roomId) => {
       socket.leave(roomId);
       console.log(`User left room ${roomId}`);
-    });
-  
-    // Broadcasting messages to room participants
-    socket.on('chatMessage', (roomId, message) => {
-      io.to(roomId).emit('message', message); // Emit message to all clients in the room
-    });
-  
-    socket.on('disconnect', () => {
-      console.log('User disconnected');
-    });
   });
-  
+
+  // Broadcasting messages to room participants
+  socket.on('chatMessage', (roomId, message, username) => {
+      io.to(roomId).emit('message', { username: username, message: message }); // Emit message to all clients in the room along with the username
+  });
+
+  socket.on('disconnect', () => {
+      console.log('User disconnected');
+  });
+});
 
 // Starting the server
 

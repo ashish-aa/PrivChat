@@ -12,5 +12,6 @@ router.get('/joinRoom',indexController.getJoinRoom);
 router.post('/joinRoom',indexController.postJoinRoom);
 
 router.get('/room/:roomId',indexController.JoinRoom);  
+router.get('/error/:errTyp',indexController.getError);
 
 module.exports = router;

@@ -3,16 +3,16 @@ const mongodb = require('mongodb');
 const ObjectId = mongodb.ObjectId;
 
 exports.getIndex = (req,res,next)=>{
-    res.render('index',{pageTitle:'Home'});
+    res.render('index',{pageTitle:'Home',path:'/'});
 }
 
 exports.getCreateRoom = (req,res,next)=>{
-    res.render('createRoom',{pageTitle:"Create Room"});
+    res.render('createRoom',{pageTitle:"Create Room",path:'/createRoom'});
 
 }
  
 exports.getJoinRoom = (req,res,next)=>{
-    res.render('joinRoom',{pageTitle:"Join Room"});
+    res.render('joinRoom',{pageTitle:"Join Room",path:"joinRoom"});
 
 }
 
@@ -28,6 +28,10 @@ exports.postJoinRoom = async (req, res,next) => {
       }
       
       res.redirect(`/room/${room._id}`); 
+   }).catch(err=>{
+    console.log(err);
+    return res.status(404).redirect('/error/notF');
+
    })
 //    console.log(room);
   
@@ -38,7 +42,7 @@ exports.JoinRoom = async (req, res) => {
       const roomId = req.params.roomId;
       const room = await Room.findById(new ObjectId(roomId));
       if (!room) {
-        return res.status(404).send('Room not found');
+        return res.status(404).redirect('/error/notF');
       }
       res.render('room', { room }); // Render the room view with the room data
     } catch (err) {
@@ -59,3 +63,14 @@ exports.postCreateRoom =   async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   }
+
+  exports.getError = (req,res,next)=>{
+    const errTyp = req.params.errTyp;
+    if(errTyp==='notF'){
+        res.render('error',
+        {errMsg:"Room Not Found !",
+         pageTitle:"404",
+         path:'/error/notF'});
+    }
+
+}

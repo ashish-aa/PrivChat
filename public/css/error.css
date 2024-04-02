@@ -1,0 +1,54 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Using a sans-serif font for consistency */
+    background-color: #f1f1f1; /* Light grey background color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.error-form {
+    background-color: #ffffff; /* White background for the form */
+    padding: 20px; /* Padding around the form */
+    border-radius: 10px; /* Rounded corners for a card-like appearance */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1); /* Added more shadow for depth */
+    width: 400px; /* Increased width of the form */
+    height: 150px; /* Reduced height of the form to about half */
+    text-align: center; /* Center the text */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.error-message {
+    background-color: #f74242; /* Bold red background for the header */
+    padding: 10px; /* Padding around the header */
+    border-radius: 5px; /* Rounded corners for the header */
+    margin-bottom: 20px; /* Space below the header */
+    color: #ffffff; /* White text for the header */
+}
+
+.error-message h1 {
+    margin: 0; /* Remove default margin */
+}
+
+.submit-button {
+    align-self: center; /* Center the button within the flex container */
+}
+.submit-button button {
+    background-color: #0056b3; /* Secondary color for the button */
+    color: #ffffff; /* White text for the button */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    padding: 15px 30px; /* Increased padding for the button */
+    font-size: 18px; /* Increased font size for the button text */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submit-button button:hover {
+    background-color: #003f80; /* Darker secondary color on hover */
+}

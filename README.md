@@ -12,5 +12,26 @@ ChatNexus is a real-time chat application built using Node.js, Express.js, Socke
 
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository: git clone https://github.com/yourusername/chatnexus.git 
+2. Install dependencies:
+cd chatnexus
+npm install
+
+3. Start the server:
+npm start
+
+
+4. Access the application in your browser at `http://localhost:3000`.
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request for any improvements or features you'd like to add.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
+
 

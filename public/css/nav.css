@@ -1,0 +1,51 @@
+/* Navigation Bar Styles */
+.nav-bar {
+    position: fixed; /* Fixed position to stick to the left side */
+    top: 50%; /* Center vertically */
+    left: 0; /* Align to the left side of the page */
+    width: 150px; /* Reduced width of the navigation bar */
+    height: auto; /* Adjust height automatically based on content */
+    background-color: #f1f1f1; /* Light grey background color */
+    overflow: auto; /* Enable scrolling if the content overflows */
+    padding: 20px 0; /* Vertical padding to center the title */
+    transform: translateY(-50%); /* Center vertically */
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+}
+
+.nav-bar h2 {
+    color: #333; /* Dark text color for the title */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.nav-bar ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Full width to center the list */
+}
+
+.nav-bar li {
+    padding: 10px 0; /* Vertical padding for each list item */
+    width: 100%; /* Full width to center the list items */
+}
+
+.nav-bar a {
+    display: block; /* Make links block elements to fill the width */
+    color: #333; /* Dark text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px; /* Horizontal padding for links */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    width: 100%; /* Full width to center the links */
+    text-align: center; /* Center the text */
+}
+
+.nav-bar a:hover {
+    background-color: #ddd; /* Lighter grey background on hover */
+    color: #0072ff; /* Blue text color on hover */
+}

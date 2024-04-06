@@ -1,0 +1,58 @@
+/* Additional CSS for this page */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #bdd2eb; /* Light blue shade for body background */
+}
+
+.welcome-container h1 {
+    color: #333; /* Dark grey for heading to contrast with the background */
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif; /* Using a different font for the heading */
+    font-size: 2.5em; /* Larger font size for the heading */
+    font-weight: 300; /* Light font weight for a softer look */
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    padding: 25px 40px; /* Increased padding for larger size and height */
+    border: none;
+    border-radius: 10px; /* Rounded corners for card-like appearance */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 18px; /* Larger font size */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+#crRmBt {
+    background-color: #0072ff; /* Blue background for create room button */
+    color: #ffffff; /* White text for button */
+}
+
+#crRmBt:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+#jnRmBt {
+    background-color: #ffffff; /* Light grey background for join room button */
+    color: #0072ff; /* Light purple text for button */
+}
+
+#jnRmBt:hover {
+    background-color: #e0f7fa; /* Lighter grey on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}

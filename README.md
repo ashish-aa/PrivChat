@@ -15,7 +15,7 @@ Welcome to ChatNexus! This project is a real-time chat application built using N
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/chatnexus.git
+    git clone https://github.com/ashish-aa/chatnexus.git
     ```
 
 2. Install dependencies:

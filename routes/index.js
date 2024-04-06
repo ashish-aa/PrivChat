@@ -3,7 +3,10 @@ const router = express.Router();
 const indexController = require('../controllers/indexController');
 
 
+
+
 router.get('/',indexController.getIndex);
+router.get('/home',indexController.getHome);
 
 router.get('/createRoom',indexController.getCreateRoom);
 

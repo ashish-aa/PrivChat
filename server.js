@@ -5,11 +5,14 @@ const http = require('http');
 const socketIO = require('socket.io');
 const mongoose = require('mongoose');
 const path = require('path');
-
+const session = require('express-session');
+const mongoDbStore = require('connect-mongodb-session')(session);
 
 // Importing routes
 const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 
+const MONGODB_URI = 'mongodb+srv://ashawale3194:NYJZ9nd8tyDL2Bn0@cluster0.3ktsbqn.mongodb.net/chatApp?retryWrites=true&w=majority&appName=Cluster0';
 
 // Initializing Express app
 const app = express();
@@ -17,6 +20,10 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 // Connecting to MongoDB
+const store = new mongoDbStore({
+  uri:MONGODB_URI,
+  collection:"sessions"
+})
 
 // Setting view engine to EJS
 app.set('view engine', 'ejs');
@@ -24,8 +31,15 @@ app.set('view engine', 'ejs');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret:"my secret",
+  resave:false,
+  saveUninitialized:false,
+  store:store
+}));
 // Routes
-app.use('/', indexRouter);
+app.use(indexRouter);
+app.use(authRouter);
 
 io.on('connection', (socket) => {
   console.log('A user connected');
@@ -55,7 +69,7 @@ io.on('connection', (socket) => {
 
 // Starting the server
 
-mongoose.connect('mongodb+srv://ashawale3194:NYJZ9nd8tyDL2Bn0@cluster0.3ktsbqn.mongodb.net/chatApp?retryWrites=true&w=majority&appName=Cluster0',
+mongoose.connect(MONGODB_URI,
  { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() =>{
      console.log('MongoDB connected');

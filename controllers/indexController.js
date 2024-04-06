@@ -2,9 +2,15 @@ const Room = require('../models/room');
 const mongodb = require('mongodb');
 const ObjectId = mongodb.ObjectId;
 
-exports.getIndex = (req,res,next)=>{
-    res.render('index',{pageTitle:'Home',path:'/'});
+exports.getHome = (req,res,next)=>{
+    res.render('home',{pageTitle:'Home',path:'/home'});
 }
+
+exports.getIndex = (req,res,next)=>{
+  res.render('index',{pageTitle:"ChatApp",path:'/'});
+}
+
+
 
 exports.getCreateRoom = (req,res,next)=>{
     res.render('createRoom',{pageTitle:"Create Room",path:'/createRoom'});
@@ -46,7 +52,7 @@ exports.JoinRoom = async (req, res) => {
       if (!room) {
         return res.status(404).redirect('/error/notF');
       }
-      res.render('room', { room, username:username}); // Render the room view with the room data
+      res.render('room', { room, username:username,path:'/room/:${roomId}'}); // Render the room view with the room data
     } catch (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');

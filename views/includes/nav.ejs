@@ -1,27 +1,14 @@
 <nav class="nav-bar">
     <h2>Explore</h2> <!-- Title for the navigation bar -->
     <ul>
-        <% if(path=='/'){%>
+        <% if(!isAuth){%>
             <li><a href="/login">Login</a></li>
             <li><a href="/signUp">Sign Up</a></li>
-        <%} else if(path=='/home'){%>
-
-            <li><a href="/home">Home</a></li>
-            <li><a href="/createRoom">New Room</a></li>
-            <li><a href="/joinRoom">Join</a></li>
-            <li><a href="#contact">Settings</a></li>
-        <%} else if(path=='/joinRoom'){%>
-
-            <li><a href="/home">Home</a></li>
-            <li><a href="/createRoom">New Room</a></li>
-            <li><a href="/joinRoom">Join</a></li>
-            <li><a href="#contact">Settings</a></li>
         <%} else{%>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/createRoom">New Room</a></li>
-            <li><a href="/joinRoom">Join</a></li>
-            <li><a href="#contact">Settings</a></li>
-
-        <%}%>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/createRoom">New Room</a></li>
+                <li><a href="/joinRoom">Join</a></li>
+                <li><a href="#contact">Settings</a></li>
+        <%}%> 
     </ul>
 </nav>

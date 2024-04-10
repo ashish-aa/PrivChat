@@ -18,13 +18,19 @@ exports.getIndex = (req,res,next)=>{
 
 
 exports.getCreateRoom = (req,res,next)=>{
-    res.render('createRoom',{pageTitle:"Create Room",path:'/createRoom',isAuth:req.session.isLoggedIn});
+    
+  if(req.session.isLoggedIn){
+    res.redirect('/home');
+  }else{res.render('createRoom',{pageTitle:"Create Room",path:'/createRoom',isAuth:req.session.isLoggedIn});}
 
 }
  
 exports.getJoinRoom = (req,res,next)=>{
+  if(req.session.isLoggedIn){
+    res.redirect('/home');
+  }else{
     res.render('joinRoom',{pageTitle:"Join Room",path:"joinRoom",isAuth:req.session.isLoggedIn});
-
+  }
 }
 
 exports.postJoinRoom = async (req, res,next) => {
@@ -57,7 +63,10 @@ exports.JoinRoom = async (req, res) => {
       if (!room) {
         return res.status(404).redirect('/error/notF');
       }
-      res.render('room', { room, username:username,path:'/room/:${roomId}',isAuth:req.session.isLoggedIn}); // Render the room view with the room data
+      if(req.session.isLoggedIn){
+        res.redirect('/home');
+      }else{
+      res.render('room', { room, username:username,path:'/room/:${roomId}',isAuth:req.session.isLoggedIn});} // Render the room view with the room data
     } catch (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');
@@ -80,11 +89,14 @@ exports.postCreateRoom =   async (req, res) => {
   exports.getError = (req,res,next)=>{
     const errTyp = req.params.errTyp;
     if(errTyp==='notF'){
+      if(req.session.isLoggedIn){
+        res.redirect('/home');
+      }else{
         res.render('error',
         {errMsg:"Room Not Found !",
          pageTitle:"404",
          path:'/error/notF',
-         isAuth:req.session.isLoggedIn});
+         isAuth:req.session.isLoggedIn});}
     }
 
 }

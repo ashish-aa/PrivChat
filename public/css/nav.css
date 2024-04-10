@@ -3,10 +3,12 @@
     position: fixed; /* Fixed position to stick to the left side */
     top: 50%; /* Center vertically */
     left: 0; /* Align to the left side of the page */
-    width: 150px; /* Reduced width of the navigation bar */
+    width: auto; /* Adjust width automatically based on content */
+    min-width: 200px; /* Ensure the navbar is at least 200px wide */
+    max-width: 100%; /* Ensure it doesn't exceed the viewport width */
     height: auto; /* Adjust height automatically based on content */
     background-color: #f1f1f1; /* Light grey background color */
-    overflow: auto; /* Enable scrolling if the content overflows */
+    overflow: hidden; /* Prevent horizontal scrolling */
     padding: 20px 0; /* Vertical padding to center the title */
     transform: translateY(-50%); /* Center vertically */
     border-radius: 10px; /* Smooth corners */
@@ -15,24 +17,31 @@
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
 .nav-bar h2 {
     color: #333; /* Dark text color for the title */
     text-align: center; /* Center the title */
     margin-bottom: 20px; /* Space below the title */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+    width: 100%; /* Ensure the title takes the full width */
+    text-overflow: ellipsis; /* Prevent overflow by showing ellipsis */
+    overflow: hidden; /* Hide overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    padding: 0 20px; /* Horizontal padding to ensure the header fits within the navbar */
 }
 
 .nav-bar ul {
     list-style-type: none; /* Remove default list styling */
     margin: 0;
     padding: 0;
-    width: 100%; /* Full width to center the list */
+    width: auto; /* Adjust width automatically based on content */
 }
 
 .nav-bar li {
     padding: 10px 0; /* Vertical padding for each list item */
-    width: 100%; /* Full width to center the list items */
+    width: auto; /* Adjust width automatically based on content */
 }
 
 .nav-bar a {
@@ -40,12 +49,60 @@
     color: #333; /* Dark text color */
     text-decoration: none; /* Remove underline */
     padding: 10px 20px; /* Horizontal padding for links */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    width: 100%; /* Full width to center the links */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+    width: auto; /* Adjust width automatically based on content */
     text-align: center; /* Center the text */
 }
 
 .nav-bar a:hover {
     background-color: #ddd; /* Lighter grey background on hover */
     color: #0072ff; /* Blue text color on hover */
+}
+
+/* Logout Button Styling */
+.nav-bar form {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center items horizontally */
+    width: auto; /* Adjust width automatically based on content */
+}
+
+.nav-bar button {
+    background-color: #e43535; /* Dark background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Padding for the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+    width: auto; /* Adjust width automatically based on content */
+    text-align: center; /* Center the text */
+}
+
+.nav-bar button:hover {
+    background-color: #ff0000; /* Blue background on hover */
+    color: #fff; /* White text color on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-bar {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 100%; /* Ensure it doesn't exceed the screen width */
+        position: static; /* Static position on smaller screens */
+        transform: none; /* No transform needed */
+        border-radius: 0; /* No rounded corners on smaller screens */
+        box-shadow: none; /* No shadow on smaller screens */
+        padding: 10px 0; /* Reduced vertical padding */
+    }
+
+    .nav-bar h2 {
+        margin-bottom: 10px; /* Reduced space below the title */
+    }
+
+    .nav-bar li {
+        padding: 5px 0; /* Reduced vertical padding for list items */
+    }
+
+    .nav-bar a {
+        padding: 5px 10px; /* Reduced horizontal padding for links */
+    }
 }

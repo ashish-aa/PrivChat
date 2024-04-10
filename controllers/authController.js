@@ -14,4 +14,13 @@ exports.postLogin = (req,res,next)=>{
     res.redirect('/home');
 }
 
+exports.postLogout = (req,res,next)=>{
+    req.session.destroy((err)=>{
+        console.log(err);
+        res.redirect('/');
+
+    });
+
+}
+
 

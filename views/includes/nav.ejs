@@ -4,7 +4,8 @@
         <% if(!isAuth){%>
             <li><a href="/login">Login</a></li>
             <li><a href="/signUp">Sign Up</a></li>
-        <%} else{%>
+        <%}%>
+        <%if(isAuth){%>
                 <li><a href="/home">Home</a></li>
                 <li><a href="/createRoom">New Room</a></li>
                 <li><a href="/joinRoom">Join</a></li>

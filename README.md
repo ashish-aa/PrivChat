@@ -15,13 +15,14 @@ Welcome to PrivChat! This project is a real-time chat application built using No
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/ashish-aa/chatnexus.git
+    git clone https://github.com/ashish-aa/priv-chat.git
     ```
+    
 
 2. Install dependencies:
 
     ```bash
-    cd chatnexus
+    cd priv-chat
     npm install
     ```
 

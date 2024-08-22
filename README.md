@@ -1,6 +1,6 @@
-# ChatNexus
+# PrivChat
 
-Welcome to ChatNexus! This project is a real-time chat application built using Node.js, Express.js, Socket.IO, and MongoDB. It enables users to create private chat rooms with unique passkeys, facilitating seamless communication with other users.
+Welcome to PrivChat! This project is a real-time chat application built using Node.js, Express.js, Socket.IO, and MongoDB. It enables users to create private chat rooms with unique passkeys, facilitating seamless communication with other users.
 
 ## Features
 
